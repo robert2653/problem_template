@@ -1,10 +1,9 @@
 #include <bits/stdc++.h>
 #include "../testlib.h"
 using namespace std;
-using ll = long long;
  
 void check(vector<string> files) { // inf(input), ouf(judge), ans(user)
-    setName("compare sequences of tokens");
+    setName("mutiple solution judge");
     char *argv[4];
     for (int i = 1; i <= 3; i++) {
         argv[i] = new char(files[i - 1].length());
@@ -12,25 +11,17 @@ void check(vector<string> files) { // inf(input), ouf(judge), ans(user)
     }
 
     registerTestlibCmd(4, argv);
+    // do something
+    // 讀完 input
 
-    int n = 0;
-    string j, p;
+    // 讀完 judge ans
 
-    while (!ans.seekEof() && !ouf.seekEof()) {
-        n++;
+    // 讀 user output
 
-        ans.readWordTo(j);
-        ouf.readWordTo(p);
-
-        if (j != p)
-            quitf(_wa, "%d%s words differ - expected: '%s', found: '%s'", n, englishEnding(n).c_str(),
-                  compress(j).c_str(), compress(p).c_str());
-    }
+    // do something
+    while (!ouf.seekEof()) { ouf.readLine(); }
     if (ans.seekEof() && ouf.seekEof()) {
-        if (n == 1)
-            quitf(_ok, "\"%s\"", compress(j).c_str());
-        else
-            quitf(_ok, "%d tokens", n);
+        quitf(_ok, "AC");
     } else {
         if (ans.seekEof())
             quitf(_wa, "Participant output contains extra tokens");
@@ -38,6 +29,7 @@ void check(vector<string> files) { // inf(input), ouf(judge), ans(user)
             quitf(_wa, "Unexpected EOF in the participants output");
     }
 }
+
 int main(int argc, char **argv) { // sample total
     string inputFile = toString(argv[1]);
     string answerFile = toString(argv[2]);

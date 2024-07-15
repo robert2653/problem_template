@@ -28,7 +28,7 @@ def user_output(inputFile, userFile):
     with open(userFile, 'w') as f_out:
         f_out.write(process.stdout.decode())
 
-def run_checker(inputFile, ansFile, userFile, caseName):
+def checker_output(inputFile, ansFile, userFile, caseName):
     argv = [inputFile, ansFile, userFile]
     checker_process = subprocess.run(['./' + CHECKER_EXECUTION_FILE] + argv, capture_output = True, text = True)
     print('case', caseName, ':', checker_process.stderr, end = '')
@@ -46,9 +46,9 @@ if __name__ == '__main__':
         user_output(SECRET_FOLDER + f'{i}' + '.in', USER_FOLDER + f'{i}' + '.ans')
 
     for i in range(1, sample_test_num + 1):
-        run_checker(SAMPLE_FOLDER + f'{i}' + '.in', SAMPLE_FOLDER + f'{i}' + '.ans', USER_FOLDER + f'{i}' + '.ans', i)
+        checker_output(SAMPLE_FOLDER + f'{i}' + '.in', SAMPLE_FOLDER + f'{i}' + '.ans', USER_FOLDER + f'{i}' + '.ans', i)
     for i in range(sample_test_num + 1, total_test_num + 1):
-        run_checker(SECRET_FOLDER + f'{i}' + '.in', SECRET_FOLDER + f'{i}' + '.ans', USER_FOLDER + f'{i}' + '.ans', i)
+        checker_output(SECRET_FOLDER + f'{i}' + '.in', SECRET_FOLDER + f'{i}' + '.ans', USER_FOLDER + f'{i}' + '.ans', i)
 
     if (os.path.exists(CHECKER_EXECUTION_FILE)):
         os.remove(CHECKER_EXECUTION_FILE)
