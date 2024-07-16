@@ -19,8 +19,8 @@ void check(vector<string> files) { // inf(input), ouf(judge), ans(user)
     while (!ans.seekEof() && !ouf.seekEof()) {
         n++;
 
-        ans.readWordTo(j);
-        ouf.readWordTo(p);
+        ouf.readWordTo(j);
+        ans.readWordTo(p);
 
         if (j != p)
             quitf(_wa, "%d%s words differ - expected: '%s', found: '%s'", n, englishEnding(n).c_str(),
