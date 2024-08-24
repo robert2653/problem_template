@@ -4,15 +4,15 @@ using ll = long long;
 
 // 範例: 生成 n 個 [1, inf] 的數字
 
-const int maxn = 2e5;
-const ll maxx = 1e9;
+const int N = 2E5;
+const int X = 1E9;
 
 struct input_controller {
     int n;
-    ll inf;
+    int x;
     input_controller() {
-        n = rnd.next(maxn) + 1;
-        inf = rnd.next(maxx) + 1;
+        n = rnd.next(N) + 1;
+        x = rnd.next(X) + 1;
     }
 };
 
@@ -22,14 +22,7 @@ map<int, input_controller> input_controllers = {
 
 void rand_output(input_controller spec = input_controller()) {
     int n = spec.n;
-    ll inf = spec.inf;
-
-    vector<ll> out;
-    cout << n << "\n";
-    for (int i = 0; i < n; i++) {
-        out.push_back(rnd.wnext(0LL, inf, 1));
-        cout << out.back() << " \n"[i == n - 1];
-    }
+    int x = spec.x;
 }
 
 void secret(int start, int test_num, vector<int> &step) {
