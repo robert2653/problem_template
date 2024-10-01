@@ -25,12 +25,17 @@ void rand_output(input_controller spec = input_controller()) {
     int x = spec.x;
 }
 
+string order(int n) { // 測資照字典序，個位數前導補 0
+    string res = (n < 10 ? "0" : "");
+    res += to_string(n);
+    return res;
+}
 void secret(int start, int test_num, vector<int> &step) {
     for (int cn = start; cn <= test_num; cn++) {
         bool b = true;
         for (auto &j : step) if (cn == j) b = false;
         if (!b) continue;
-        string filename = "../data/secret/" + to_string(cn) + ".in";
+        string filename = "../data/secret/" + order(cn) + ".in";
         freopen((filename).c_str(), "w", stdout);
         if (input_controllers.count(cn)) {
             rand_output(input_controllers[cn]);
@@ -44,11 +49,10 @@ void secret(int start, int test_num, vector<int> &step) {
         fclose(stdout);
     }
 }
-
 void sample(int test_num, int writeIn){
     if (!writeIn) return;
     for (int i = 1; i <= test_num; i++) {
-        string filename = "../data/sample/" + to_string(i) + ".in";
+        string filename = "../data/sample/" + order(i) + ".in";
         freopen((filename).c_str(), "w", stdout);
         string tmp = "\n";
         cerr << "input task:" << i << ":\n";
@@ -61,17 +65,17 @@ void sample(int test_num, int writeIn){
     }
 }
 void clear(vector<int> &steps){
-    for(int i = 1; i <= 100; i++){
+    for(int i = 1; i <= 1000; i++){
         bool b = true;
         for (auto &j : steps) if(i == j) b = false;
         if (!b) continue;
-        string sample_in = "../data/sample/" + to_string(i) + ".in";
-        string sample_ans = "../data/sample/" + to_string(i) + ".ans";
-        remove(sample_in.c_str());
+        string sample_in = "../data/sample/" + order(i) + ".in";
+        if (remove(sample_in.c_str())) break;
+        string sample_ans = "../data/sample/" + order(i) + ".ans";
         remove(sample_ans.c_str());
-        string secret_in = "../data/secret/" + to_string(i) + ".in";
-        string secret_ans = "../data/secret/" + to_string(i) + ".ans";
+        string secret_in = "../data/secret/" + order(i) + ".in";
         remove(secret_in.c_str());
+        string secret_ans = "../data/secret/" + order(i) + ".ans";
         remove(secret_ans.c_str());
     }
 }
