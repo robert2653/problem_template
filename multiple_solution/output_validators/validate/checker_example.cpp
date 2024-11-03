@@ -6,7 +6,7 @@ void wa(string log = "wrong answer") {
     cerr << log << ".";
     exit(43); // 答案錯誤時呼叫這個
 }
-void accept(){
+void accept() {
     cerr << "accepted.";
     exit(42);
 }
