@@ -12,7 +12,7 @@ USER_FOLDER = '../data/user/'
 USER_SUBMISSIONS_FOLDER = '../submissions/'
 MAMUAL_CPP_FILE = [
     '../submissions/accepted/ac.cpp',
-    # '../submissions/wrong_answer/wa.cpp',
+    '../submissions/wrong_answer/wa.cpp',
     '../submissions/time_limit/tle.cpp',
 ]
 
@@ -109,10 +109,10 @@ def testing(userCPP):
         case_name = os.path.splitext(os.path.basename(input_file))[0]
         result = user_output(input_file, USER_FOLDER + case_name + '.ans', user_executable)
         if result == "TLE":
-            print(f'Case {case_name}: Time Limit Exceeded')
+            print(f'Case {case_name}: Time Limit Exceeded.')
             continue
         elif result == "RE":
-            print(f'Case {case_name}: Runtime Error')
+            print(f'Case {case_name}: Runtime Error.')
             continue
         checker_output(input_file, SAMPLE_FOLDER + case_name + '.ans',
                        USER_FOLDER + case_name + '.ans', case_name)
@@ -123,10 +123,10 @@ def testing(userCPP):
         case_name = os.path.splitext(os.path.basename(input_file))[0]
         result = user_output(input_file, USER_FOLDER + case_name + '.ans', user_executable)
         if result == "TLE":
-            print(f'Case {case_name}: Time Limit Exceeded')
+            print(f'Case {case_name}: Time Limit Exceeded.')
             continue
         elif result == "RE":
-            print(f'Case {case_name}: Runtime Error')
+            print(f'Case {case_name}: Runtime Error.')
             continue
         checker_output(input_file, SECRET_FOLDER + case_name + '.ans',
                        USER_FOLDER + case_name + '.ans', case_name)

@@ -17,10 +17,9 @@ void check_accepted() {
 }
 
 // user_output: stdin
-// .ans: argv[2]
 // .in: argv[1]
+// .ans: argv[2]
 int main(int argc, char *argv[]) {
-    // freopen("../../data/sample/1.txt", "r", stdin);
     ifstream input;
     ifstream output;
     input.open(argv[1]);

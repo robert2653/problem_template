@@ -12,7 +12,7 @@ USER_FOLDER = '../data/user/'
 USER_SUBMISSIONS_FOLDER = '../submissions/'
 MAMUAL_CPP_FILE = [
     '../submissions/accepted/ac.cpp',
-    # '../submissions/wrong_answer/wa.cpp',
+    '../submissions/wrong_answer/wa.cpp',
     '../submissions/time_limit/tle.cpp',
 ]
 
@@ -45,7 +45,7 @@ def run_with_timeout(cmd, input_data, timeout):
             stdout, stderr = proc.communicate(input=input_data, timeout=timeout)
             return proc.returncode, stdout
         except subprocess.TimeoutExpired:
-            proc.kill()
+            subprocess.Popen.kill(proc)
             raise TimeoutException()
 
     proc = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -57,8 +57,6 @@ def run_with_timeout(cmd, input_data, timeout):
         return 1, None    # 超時
     except Exception as e:
         return 2, None    # 執行錯誤
-
-
 
 def user_output(inputFile, userFile, user_executable):
     """
@@ -91,16 +89,19 @@ def checker_output(inputFile, ansFile, userFile, caseName):
     - exit(42): Accepted
     - exit(43): Wrong Answer
     """
-    argv = [inputFile, ansFile, userFile]
+    argv = [inputFile, ansFile]
     try:
-        checker_process = subprocess.run(['./' + CHECKER_EXECUTION_FILE] + argv, 
-                                       capture_output=True, text=True)
-        if checker_process.returncode == 42:
-            print(f'case {caseName} : accepted.')
-        elif checker_process.returncode == 43:
-            print(f'case {caseName} : {checker_process.stderr}')
-        else:
-            print(f'case {caseName} : checker error (return code: {checker_process.returncode})')
+        with open(userFile, 'r') as f_in:
+            stdin_content = f_in.read()
+            checker_process = subprocess.run(['./' + CHECKER_EXECUTION_FILE] + argv, 
+                                        input=stdin_content.encode(),
+                                        capture_output=True)
+            if checker_process.returncode == 42:
+                print(f'case {caseName} : {checker_process.stderr.decode()}')
+            elif checker_process.returncode == 43:
+                print(f'case {caseName} : {checker_process.stderr.decode()}')
+            else:
+                print(f'case {caseName} : checker error (return code: {checker_process.returncode})')
     except Exception as e:
         print(f'case {caseName} : checker error ({str(e)})')
 
