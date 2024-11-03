@@ -1,15 +1,16 @@
 multiple_solution/data/sample/*
-!sample/.gitkeep
+!multiple_solution/datasample/.gitkeep
 multiple_solution/data/secret/*
-!secret/.gitkeep
+!multiple_solution/datasecret/.gitkeep
 multiple_solution/data/user/*
-!user/.gitkeep
+!multiple_solution/datauser/.gitkeep
+
 multiple_solution/submissions/accepted/*
-!accepted/.gitkeep
+!multiple_solution/submissions/accepted/.gitkeep
 multiple_solution/submissions/wrong_answer/*
-!wrong_answer/.gitkeep
+!multiple_solution/submissions/wrong_answer/.gitkeep
 multiple_solution/submissions/time_limit/*
-!time_limit/.gitkeep
+!multiple_solution/submissions/time_limit/.gitkeep
 
 multiple_solution/output_validators/validate/checker.cpp
 multiple_solution/MakeCase/input.cpp
@@ -19,17 +20,18 @@ multiple_solution/problem.pdf
 multiple_solution/problem.yaml
 
 unique_output/data/sample/*
-!sample/.gitkeep
+!unique_output/data/sample/.gitkeep
 unique_output/data/secret/*
-!secret/.gitkeep
+!unique_output/data/secret/.gitkeep
 unique_output/data/user/*
-!user/.gitkeep
+!unique_output/data/user/.gitkeep
+
 unique_output/submissions/accepted/*
-!accepted/.gitkeep
+!unique_output/submissions/accepted/.gitkeep
 unique_output/submissions/wrong_answer/*
-!wrong_answer/.gitkeep
+!unique_output/submissions/wrong_answer/.gitkeep
 unique_output/submissions/time_limit/*
-!time_limit/.gitkeep
+!unique_output/submissions/time_limit/.gitkeep
 
 unique_output/MakeCase/input.cpp
 unique_output/MakeCase/validator.cpp
