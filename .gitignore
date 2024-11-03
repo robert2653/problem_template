@@ -14,6 +14,9 @@ multiple_solution/submissions/time_limit/*
 multiple_solution/output_validators/validate/checker.cpp
 multiple_solution/MakeCase/input.cpp
 multiple_solution/MakeCase/validator.cpp
+multiple_solution/domjudge-problem.ini
+multiple_solution/problem.pdf
+multiple_solution/problem.yaml
 
 unique_output/data/sample/*
 !sample/.gitkeep
@@ -27,3 +30,9 @@ unique_output/submissions/wrong_answer/*
 !wrong_answer/.gitkeep
 unique_output/submissions/time_limit/*
 !time_limit/.gitkeep
+
+unique_output/MakeCase/input.cpp
+unique_output/MakeCase/validator.cpp
+unique_output/domjudge-problem.ini
+unique_output/problem.pdf
+unique_output/problem.yaml
