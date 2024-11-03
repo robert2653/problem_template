@@ -2,7 +2,8 @@
 #include "../testlib.h"
 using namespace std;
 using ll = long long;
- 
+
+// 本地 checker，非嚴格比對，可以自己改，參考 testlib.h
 void check(vector<string> files) { // inf(input), ouf(judge), ans(user)
     setName("compare sequences of tokens");
     char *argv[4];

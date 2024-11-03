@@ -1,3 +1,4 @@
+# multiple solution data
 multiple_solution/data/sample/*
 !multiple_solution/datasample/.gitkeep
 multiple_solution/data/secret/*
@@ -5,6 +6,7 @@ multiple_solution/data/secret/*
 multiple_solution/data/user/*
 !multiple_solution/datauser/.gitkeep
 
+# multiple solution submissions
 multiple_solution/submissions/accepted/*
 !multiple_solution/submissions/accepted/.gitkeep
 multiple_solution/submissions/wrong_answer/*
@@ -12,13 +14,17 @@ multiple_solution/submissions/wrong_answer/*
 multiple_solution/submissions/time_limit/*
 !multiple_solution/submissions/time_limit/.gitkeep
 
+# multiple solution makecase
 multiple_solution/output_validators/validate/checker.cpp
 multiple_solution/MakeCase/input.cpp
 multiple_solution/MakeCase/validator.cpp
+
+# multiple solution domjudge settings
 multiple_solution/domjudge-problem.ini
 multiple_solution/problem.pdf
 multiple_solution/problem.yaml
 
+# unique output data
 unique_output/data/sample/*
 !unique_output/data/sample/.gitkeep
 unique_output/data/secret/*
@@ -26,6 +32,7 @@ unique_output/data/secret/*
 unique_output/data/user/*
 !unique_output/data/user/.gitkeep
 
+# unique output submissions
 unique_output/submissions/accepted/*
 !unique_output/submissions/accepted/.gitkeep
 unique_output/submissions/wrong_answer/*
@@ -33,8 +40,12 @@ unique_output/submissions/wrong_answer/*
 unique_output/submissions/time_limit/*
 !unique_output/submissions/time_limit/.gitkeep
 
+# unique output makecase
 unique_output/MakeCase/input.cpp
+unique_output/MakeCase/checker.cpp
 unique_output/MakeCase/validator.cpp
+
+# unique output domjudge settings
 unique_output/domjudge-problem.ini
 unique_output/problem.pdf
 unique_output/problem.yaml

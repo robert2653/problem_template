@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// domjudge form checker
 void wa(string log = "wrong answer") {
     cerr << log << ".";
     exit(43); // 答案錯誤時呼叫這個
