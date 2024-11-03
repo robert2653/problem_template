@@ -10,7 +10,10 @@ multiple_solution/submissions/wrong_answer/*
 !wrong_answer/.gitkeep
 multiple_solution/submissions/time_limit/*
 !time_limit/.gitkeep
+
 multiple_solution/output_validators/validate/checker.cpp
+multiple_solution/MakeCase/input.cpp
+multiple_solution/MakeCase/validator.cpp
 
 unique_output/data/sample/*
 !sample/.gitkeep
