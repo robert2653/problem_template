@@ -7,6 +7,7 @@ multiple_solution/data/user/*
 !multiple_solution/datauser/.gitkeep
 
 # multiple solution submissions
+multiple_solution/submissions/*
 multiple_solution/submissions/accepted/*
 !multiple_solution/submissions/accepted/.gitkeep
 multiple_solution/submissions/wrong_answer/*
@@ -33,6 +34,7 @@ unique_output/data/user/*
 !unique_output/data/user/.gitkeep
 
 # unique output submissions
+multiple_solution/submissions/*
 unique_output/submissions/accepted/*
 !unique_output/submissions/accepted/.gitkeep
 unique_output/submissions/wrong_answer/*

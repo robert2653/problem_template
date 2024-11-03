@@ -9,7 +9,7 @@ SAMPLE_FOLDER = '../data/sample/'
 SECRET_FOLDER = '../data/secret/'
 USER_FOLDER = '../data/user/'
 
-USER_EXECUTION_FOLDER = '../executions/'
+USER_SUBMISSIONS_FOLDER = '../submissions/'
 MAMUAL_CPP_FILE = [
     '../submissions/accepted/ac.cpp',
     # '../submissions/wrong_answer/wa.cpp',
@@ -158,9 +158,9 @@ if __name__ == '__main__':
     except Exception as e:
         print('Error:', e)
 
-    # 遍歷 USER_EXECUTION_FOLDER, 找到 cpp
+    # 遍歷 USER_SUBMISSIONS_FOLDER, 找到 cpp
     try:
-        userCPPFiles = glob.glob(os.path.join(USER_EXECUTION_FOLDER, '*.cpp'))
+        userCPPFiles = glob.glob(os.path.join(USER_SUBMISSIONS_FOLDER, '*.cpp'))
         for userCPP in userCPPFiles:
             testing(userCPP)
     except Exception as e:
