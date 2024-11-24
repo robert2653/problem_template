@@ -1,3 +1,6 @@
+# else
+a.out
+
 # multiple solution data
 multiple_solution/data/sample/*
 !multiple_solution/datasample/.gitkeep
