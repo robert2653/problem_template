@@ -11,9 +11,12 @@ USER_FOLDER = '../data/user/'
 
 USER_SUBMISSIONS_FOLDER = '../submissions/'
 MAMUAL_CPP_FILE = [
-    '../submissions/accepted/ac.cpp',
-    '../submissions/wrong_answer/wa.cpp',
-    '../submissions/time_limit/tle.cpp',
+    # '../submissions/accepted/ac.cpp',
+    # '../submissions/accepted/ac2.cpp',
+    # '../submissions/wrong_answer/wa.cpp',
+    # '../submissions/wrong_answer/wa2.cpp',
+    # '../submissions/time_limit/tle.cpp',
+    # '../submissions/time_limit/tle2.cpp',
 ]
 
 TIME_LIMIT = 1  # seconds
