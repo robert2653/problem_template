@@ -3,13 +3,13 @@ import os
 import re
 import glob
 
-CPP_FILE = '../submissions/accepted/ac.cpp'
+CPP_FILE = '../submissions/accepted/ac.c'
 EXECUTION_FILE = '../submissions/accepted/ac.out'
 SAMPLE_FOLDER = '../data/sample/'
 SECRET_FOLDER = '../data/secret/'
 
 # 編譯
-compile_process = subprocess.run(['g++', CPP_FILE, '-o', EXECUTION_FILE], check=True)
+compile_process = subprocess.run(['gcc', CPP_FILE, '-o', EXECUTION_FILE], check=True)
 
 def output(case_name):
     input_file = f'{case_name}.in'
