@@ -6062,3 +6062,130 @@ TestlibFinalizeGuard testlibFinalizeGuard;
 
 #endif
 #endif
+
+#include <any>
+/**
+ * @brief A flexible specification container that stores key-value pairs of various types
+ * 
+ * The Spec class provides a type-safe way to store and retrieve parameters of different types
+ * using string keys. It internally uses std::any to allow storing any type of value.
+ */
+class Spec {
+private:
+    /** Storage for key-value pairs where values can be of any type */
+    std::unordered_map<std::string, std::any> params;
+
+public:
+    /**
+     * @brief Default constructor
+     */
+    Spec() = default;
+
+    /**
+     * @brief Construct a Spec from a list of key-value pairs with string literals
+     * @param list List of pairs where each pair is {key, value}
+     */
+    Spec(std::initializer_list<std::pair<const char*, std::any>> list) {
+        for (const auto &p : list) {
+            // Convert both the key and any string literal values to std::string
+            std::string key(p.first);
+            if (p.second.type() == typeid(const char*)) {
+                params[key] = std::string(std::any_cast<const char*>(p.second));
+            } else {
+                params[key] = p.second;
+            }
+        }
+    }
+
+    /**
+     * @brief Copy constructor
+     * @param other The Spec object to copy from
+     */
+    Spec(const Spec& other) = default;
+
+    /**
+     * @brief Move constructor
+     * @param other The Spec object to move from
+     */
+    Spec(Spec&& other) noexcept = default;
+
+    /**
+     * @brief Copy assignment operator
+     * @param other The Spec object to copy from
+     * @return Reference to this object
+     */
+    Spec& operator=(const Spec& other) = default;
+
+    /**
+     * @brief Move assignment operator
+     * @param other The Spec object to move from
+     * @return Reference to this object
+     */
+    Spec& operator=(Spec&& other) noexcept = default;
+
+    /**
+     * @brief Default destructor
+     */
+    ~Spec() = default;
+
+    /**
+     * @brief Set a value for a given key
+     * @tparam T Type of the value to store
+     * @param key Key to associate with the value
+     * @param value Value to store
+     */
+    template<class T>
+    void set(const std::string &key, T value) {
+        if (value.type() == typeid(const char*)) {
+            params[key] = std::string(std::any_cast<const char*>(value));
+        } else {
+            params[key] = value;
+        }
+    }
+    
+    /**
+     * @brief Retrieve a value by key with type checking
+     * @tparam T Expected type of the value
+     * @param key Key associated with the value
+     * @return The value if found and of correct type, otherwise returns default-constructed T
+     */
+    template<class T>
+    T get(const std::string &key) const {
+        auto it = params.find(key);
+        if (it != params.end()) {
+            try {
+                return std::any_cast<T>(it->second);
+            } catch (const std::bad_any_cast &e) {
+                __testlib_fail("Type conversion failed: " + std::string(e.what()));
+            }
+        } else {
+            __testlib_fail("Key not found: " + key);
+        }
+        return T();
+    }
+
+    /**
+     * @brief Check if a key exists in the Spec
+     * @param key The key to check
+     * @return true if the key exists, false otherwise
+     */
+    bool hasKey(const std::string &key) const {
+        return params.find(key) != params.end();
+    }
+
+    /**
+     * @brief Remove a key-value pair from the Spec
+     * @param key The key to remove
+     * @return true if the key was found and removed, false otherwise
+     */
+    bool remove(const std::string &key) {
+        return params.erase(key) > 0;
+    }
+
+    /**
+     * @brief Clear all key-value pairs from the Spec
+     */
+    void clear() {
+        params.clear();
+    }
+};
