@@ -13,7 +13,7 @@ USER_SUBMISSIONS_FOLDER = '../submissions/'
 MAMUAL_CPP_FILE = [
     # '../submissions/accepted/ac.cpp',
     # '../submissions/accepted/ac2.cpp',
-    # '../submissions/wrong_answer/wa.cpp',
+    '../submissions/wrong_answer/wa.c',
     # '../submissions/wrong_answer/wa2.cpp',
     # '../submissions/time_limit/tle.cpp',
     # '../submissions/time_limit/tle2.cpp',
@@ -93,18 +93,23 @@ def checker_output(inputFile, ansFile, userFile, caseName):
     checker_process = subprocess.run(['./' + CHECKER_EXECUTION_FILE] + argv, capture_output=True, text=True)
     print('case', caseName, ':', checker_process.stderr, end='')
 
-def testing(userCPP):
+def testing(filename: str):
     # 確定 user_executable 的路徑
-    user_executable = os.path.splitext(userCPP)[0] + '.exe'
+    user_executable = os.path.splitext(filename)[0] + '.exe'
     
-    # 編譯 userCPP
+    # 編譯使用者程式
     try:
-        subprocess.run(['g++', userCPP, '-o', user_executable], check=True)
-    except subprocess.CalledProcessError:
-        print(f'Compilation Error: {userCPP}')
-        return
-    
-    print(f'Testing {userCPP}.')
+        if filename.endswith('.cpp'):
+            compile_process = subprocess.run(['g++', filename, '-o', user_executable], check=True)
+        elif filename.endswith('.c'):
+            compile_process = subprocess.run(['gcc', filename, '-o', user_executable], check=True)
+    except Exception as e:
+        # open log file and add it to the log file
+        # with open('log.txt', 'a') as f:
+        #     f.write(f'{filename}: {e}\n')
+        pass
+        
+    print(f'Testing {filename}.')
 
     # 處理 sample 測試案例
     sample_cases = glob.glob(os.path.join(SAMPLE_FOLDER, '*.in'))
@@ -150,8 +155,11 @@ if __name__ == '__main__':
     # 遍歷 USER_SUBMISSIONS_FOLDER, 找到 cpp
     try:
         userCPPFiles = glob.glob(os.path.join(USER_SUBMISSIONS_FOLDER, '*.cpp'))
+        userCFiles = glob.glob(os.path.join(USER_SUBMISSIONS_FOLDER, '*.c'))
         for userCPP in userCPPFiles:
             testing(userCPP)
+        for userC in userCFiles:
+            testing(userC)
     except Exception as e:
         print('Error:', e)
 

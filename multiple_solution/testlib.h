@@ -6189,3 +6189,14 @@ public:
         params.clear();
     }
 };
+
+template<class T>
+T average_distribution(T l, T r, int a, int b, int i) {
+    ensure(a <= i && i <= b);
+    ensure(l <= r);
+    if (a == i) return l;
+    if (b == i) return r;
+    T dif = r - l;
+    double pw = pow(dif, 1.0 / (b - a));
+    return T(l + pow(pw, i - a));
+}

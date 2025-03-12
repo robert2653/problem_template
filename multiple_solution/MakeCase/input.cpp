@@ -2,40 +2,13 @@
 using namespace std;
 using ll = long long;
 
-const int N = 2E5;
-const int X = 1E9;
+map<int, Spec> specs = {};
 
-map<int, Spec> specs = {
-    {3, {{"n", 1}, {"m", 2}, {"op", "salmon"}, {"inf", X}}},
-};
+void rand_output(int casenum, Spec spec) {}
 
-void rand_output(int casenum, Spec spec) {
-    int n = spec.get<int>("n"), m = spec.get<int>("m");
-    string s = spec.get<string>("op");
-    cout << n << " " << m << "\n";
-    for (int i = 0; i < n; i++) {
-        cout << rnd.next(1, m) << " ";
-    }
-    cout << s << "\n";
-}
+vector<string> samples {};
 
-vector<string> samples {
-"\
-1 1\n\
-1 2\n\
-",
-
-"\
-2 1\n\
-1 2\n\
-",
-};
-
-void manual_secret(int casenum) {
-    if (casenum == 8) {
-        cout << 123 << "\n";
-    }
-}
+void manual_secret(int casenum) {}
 
 int main(int argc, char **argv) { // sample total 要跳過的測資...
     registerGen(argc, argv, 1);

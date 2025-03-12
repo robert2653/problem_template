@@ -2,61 +2,13 @@
 using namespace std;
 using ll = long long;
 
-const int X = 1E9;
+map<int, Spec> specs = {};
 
-map<int, Spec> specs = {
-    {4, {{"inf", 20}, {"ans", "touch"}}},
-    {5, {{"inf", X}}},
-    {6, {{"inf", X}}},
-    {7, {{"inf", X}}},
-    {8, {{"inf", X}}},
-    {9, {{"inf", X}}},
-    {10, {{"inf", X}}},
-    {11, {{"inf", X}}},
-};
+void rand_output(int casenum, Spec spec) {}
 
-void rand_output(int casenum, Spec spec) {
-    int x = spec.get<int>("inf");
-    if (spec.hasKey("ans")) {
-        string ans = spec.get<string>("ans");
-        if (ans == "touch") {
-            cout << "0 0 ";
-            cout << 0 << " " << rnd.next(x) << " ";
-            cout << 0 << " " << rnd.next(x) << "\n";
-            return;
-        }
-    }
-    pair<int, int> res;
-    auto gen = [&]() -> pair<int, int> {
-        int a = rnd.next(-x, x + 1), b = rnd.next(-x, x + 1);
-        return {a, b};
-    };
-    auto a = gen(), b = gen(), c = gen();
-    while (a == b) {
-        b = gen();
-    }
-    cout << a.first << " " << a.second << " " << b.first << " " << b.second << " " << c.first << " " << c.second << "\n";
-}
+vector<string> samples {};
 
-vector<string> samples {
-"\
-1 1 5 3 2 3\n\
-",
-
-"\
-1 1 5 3 4 1\n\
-",
-
-"\
-1 1 5 3 3 2\n\
-"
-};
-
-void manual_secret(int casenum) {
-    if (casenum == 12) {
-        cout << "0 0 0 10 0 -10\n";
-    }
-}
+void manual_secret(int casenum) {}
 
 int main(int argc, char **argv) { // sample total 要跳過的測資...
     registerGen(argc, argv, 1);
